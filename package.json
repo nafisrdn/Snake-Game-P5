@@ -1,0 +1,29 @@
+{
+  "name": "snake-game-p5",
+  "version": "1.0.0",
+  "description": "Casual snake game created with p5",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nafisrdn/Snake-Game-P5.git"
+  },
+  "author": "Nafis Fadhlurrohman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nafisrdn/Snake-Game-P5/issues"
+  },
+  "homepage": "https://github.com/nafisrdn/Snake-Game-P5#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.11.0"
+  }
+}

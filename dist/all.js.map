@@ -1,0 +1,1 @@
+{"version":3,"sources":["sketch.js"],"names":["test","console","log"],"mappings":";;AAAA,IAAMA,IAAI,GAAG,CAAb;AAEAC,OAAO,CAACC,GAAR,CAAYF,IAAZ","file":"all.js","sourcesContent":["const test = 0;\r\n\r\nconsole.log(test);"]}
