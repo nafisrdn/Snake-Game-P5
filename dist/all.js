@@ -3,7 +3,7 @@
 var snake;
 
 function setup() {
-  createCanvas(700, 700);
+  createCanvas(525, 525);
   frameRate(60);
   snake = new Snake(0, 0, 35, 35, 30);
 }
