@@ -20,7 +20,7 @@ function css(cb) {
 }
 
 function javascript(cb) {
-    return src('src/**/*.js')
+    return src(['src/**/*.js', '!src/plugins/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['@babel/env']
@@ -30,12 +30,17 @@ function javascript(cb) {
         .pipe(dest('dist'));
 }
 
+function jsPlugin(cb) {
+    return src('src/plugins/**/*.js')
+    .pipe(dest('dist/plugins'));
+}
+
 exports.html = html;
 exports.javascript = javascript;
 exports.css = css;
 
-exports.default = parallel(html, css, javascript);
+exports.default = parallel(html, css, javascript, jsPlugin);
 
 watch('src/**/*.html', html);
-watch('src/**/*.css', css);
+watch('src/**/*.sass', css);
 watch('src/**/*.js', javascript);
