@@ -20,7 +20,7 @@ function css(cb) {
 }
 
 function javascript(cb) {
-    return src(['src/js/sketch.js', 'src/js/snake.js', '!src/plugins/**/*.js'])
+    return src(['src/js/sketch.js', 'src/js/food.js', 'src/js/snake.js', '!src/plugins/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ['@babel/env']
