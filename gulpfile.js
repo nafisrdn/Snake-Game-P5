@@ -27,12 +27,13 @@ function javascript(cb) {
         }))
         .pipe(concat('all.js'))
         .pipe(sourcemaps.write('.'))
-        .pipe(dest('dist'));
+        .pipe(dest('dist/js'));
 }
 
 function jsPlugin(cb) {
-    return src('src/plugins/**/*.js')
-    .pipe(dest('dist/plugins'));
+    return src(['src/plugins/p5.min.js', 'src/plugins/p5.collide2d.min.js'])
+    .pipe(concat('plugins.js'))
+    .pipe(dest('dist/js'));
 }
 
 exports.html = html;

@@ -19,8 +19,11 @@ class Snake{
         this.ydir = y;
     }
 
+    eat(food) {
+        return collidePointRect(this.x, this.y, food.x, food.y, this.width - 1, this.height - 1);
+    }
+
     update(){
-        
         if (this.delta == this.delay) {
             this.x += Math.floor(this.width * this.xdir);
             this.y += Math.floor(this.height * this.ydir);
