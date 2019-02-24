@@ -1,5 +1,8 @@
 class Snake{
     constructor(x, y, width, height, delay){
+        this.body = [];
+        this.body[0] = createVector(0, 0);
+
         this.x = x;
         this.y = y;
 
@@ -23,20 +26,22 @@ class Snake{
         return collidePointRect(this.x, this.y, food.x, food.y, this.width - 1, this.height - 1);
     }
 
-    update(){
-        if (this.delta == this.delay) {
-            this.x += Math.floor(this.width * this.xdir);
-            this.y += Math.floor(this.height * this.ydir);
+    
 
-            this.delta = 0;
-        }
+    grow(){
+        
+        let x = this.body[this.body.length - 1].x - this.width;
+        let y = this.body[this.body.length - 1].y;
 
-        this.delta++;
+        let bodyToCopy = createVector(x, y);
 
-    }
+            this.body.push(bodyToCopy);
+            
+            for (let i = 0; i < this.body.length; i++) {
+                const element = this.body[i];
 
-    keyPressed(){
-        this.move();
+                console.log(`body ${i}: ${element.x}`);
+            }
     }
 
     move(){
@@ -51,8 +56,62 @@ class Snake{
           }
     }
 
+    update(){
+        if (this.delta == this.delay) {
+            const head = this.body[0];
+            
+            let prevPosVector = [];
+
+            prevPosVector[0] = createVector(head.x, head.y);
+
+            head.x += Math.floor(this.width * this.xdir);
+            head.y += Math.floor(this.height * this.ydir);
+            
+            for (let i = 0; i < this.body.length; i++) {
+                if (i > 0) {
+                    let tail = this.body[i];   
+
+                    prevPosVector[i] = createVector(tail.x, tail.y);
+                    
+                    tail.x = prevPosVector[i - 1].x;
+                    tail.y = prevPosVector[i - 1].y;
+
+                    
+                    console.log(`----------------\n ${i} \n----------------`);
+                    
+                }
+                
+            }
+
+            this.delta = 0;
+        }
+        
+
+        this.delta++;
+        
+    }
+
+    keyPressed(){
+        this.move();
+
+        if (keyCode === 32) {
+            this.grow();
+        }
+    }
+
     draw(){
-        fill(0, 255, 0);
-        rect(this.x, this.y, this.width, this.height);
+        
+        for (let i = 0; i < this.body.length; i++) {
+            let b = this.body[i];
+
+            if (i === 0) {
+                fill(255, 255, 0);
+            }else{
+                fill(0, 255, 0);
+            }
+
+            rect(b.x, b.y, this.width, this.height);
+
+        }
     }
 }
