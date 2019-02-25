@@ -14,4 +14,13 @@ body {
   margin-top: 3rem;
   border: 3px solid white; }
 
+#message-1 {
+  color: white; }
+
+.restart-btn {
+  border: 0;
+  background: green;
+  color: white;
+  padding: 7px 21px; }
+
 /*# sourceMappingURL=style.css.map */

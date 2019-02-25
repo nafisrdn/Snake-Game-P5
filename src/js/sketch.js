@@ -1,14 +1,18 @@
 
 let food;
 let snake;
-let gameOver = false;
-let score = 0;
+let gameOver;
+let score;
 let gameOverText = "GAME OVER";
 
 function setup() {
     createCanvas(525, 525);
     frameRate(60)
     collideDebug(true);
+
+    gameOver = false;
+    score = 0;
+
 
     let foodX = Math.floor(random(0, 15)) * 35;
     let foodY = Math.floor(random(0, 15)) * 35;
@@ -19,8 +23,31 @@ function setup() {
     snake = new Snake(70, 70, 35 ,35, 10);
 }
 
+const restartBtn = document.body.querySelector('.restart-btn');
+
+restartBtn.onclick = function () {
+  restartGame();
+}
+
+function restartGame() {
+  setup();
+  loop();
+}
+
 function keyPressed() {
   snake.keyPressed();
+
+  if (keyCode === 32) {
+    if (gameOver) {
+      restartGame(); 
+    }
+  }
+}
+
+function mouseClicked() {
+  if (gameOver) {
+    restartGame();
+  }
 }
 
 
@@ -64,9 +91,14 @@ function draw() {
   text(score, 50, 50);
 
   if (gameOver) {
+    let subGameOverText = 'Click or Space to restart game';
 
     textSize(35);
     text(gameOverText, (width / 2) - (textWidth(gameOverText) / 2), (height / 2));
+
+
+    textSize(20);
+    text(subGameOverText, (width / 2) - (textWidth(subGameOverText) / 2), (height / 2) + 35);
 
     noLoop();
   }
