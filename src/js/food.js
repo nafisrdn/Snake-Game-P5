@@ -18,7 +18,7 @@ class Food {
     }
 
     draw() {
-        fill(255, 0, 0);
+        fill(255, 38, 1);
         rect(this.x, this.y, this.width, this.height);
     }
 }

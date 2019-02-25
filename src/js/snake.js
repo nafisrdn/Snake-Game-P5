@@ -164,7 +164,7 @@ class Snake{
     }
 
     draw(){
-        fill(0, 255, 0);
+        fill(255, 214, 1);
         for (let i = 1; i < this.body.length; i++) {
             let part = this.body[i];
 
@@ -172,8 +172,6 @@ class Snake{
 
         }
 
-        
-        fill(255, 255, 0);
         rect(this.body[0].x, this.body[0].y, this.width, this.height);
 
     }

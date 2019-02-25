@@ -46,8 +46,10 @@ function keyPressed() {
 }
 
 function mouseClicked() {
-  if (gameOver) {
-    restartGame();
+  if (mouseButton === LEFT) {
+    if (gameOver) {
+      restartGame();
+    } 
   }
 }
 
@@ -55,7 +57,7 @@ function mouseClicked() {
 function draw() {
   
   background(0);
-  noStroke();
+  // noStroke();
 
   
   snake.update();
