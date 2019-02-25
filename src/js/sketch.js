@@ -4,6 +4,7 @@ let snake;
 let gameOver;
 let score;
 let gameOverText = "GAME OVER";
+let highestScore = 0;
 
 function setup() {
     createCanvas(525, 525);
@@ -99,6 +100,12 @@ function draw() {
 
     textSize(20);
     text(subGameOverText, (width / 2) - (textWidth(subGameOverText) / 2), (height / 2) + 35);
+
+    if (score > highestScore) {
+      highestScore = score;
+    }
+
+    document.body.querySelector('#message-1').textContent = `Your highest score is: ${highestScore}`;
 
     noLoop();
   }

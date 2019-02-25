@@ -14,6 +14,9 @@ body {
   margin-top: 3rem;
   border: 3px solid white; }
 
+.mnr {
+  margin-left: 2em; }
+
 #message-1 {
   color: white; }
 
