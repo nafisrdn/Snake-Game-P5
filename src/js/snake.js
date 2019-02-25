@@ -24,6 +24,8 @@ class Snake{
         this.lastTailYdir;
 
         this.isDie = false;
+
+        this.color = [255, 214, 0];
     }
 
     setDir(x, y){
@@ -79,7 +81,6 @@ class Snake{
 
         
         
-
 
 
         let bodyToCopy = createVector(x, y);
@@ -157,14 +158,10 @@ class Snake{
 
     keyPressed(){
         this.move();
-
-        if (keyCode === 32) {
-            this.grow();
-        }
     }
 
     draw(){
-        fill(255, 214, 1);
+        fill(this.color);
         for (let i = 1; i < this.body.length; i++) {
             let part = this.body[i];
 
