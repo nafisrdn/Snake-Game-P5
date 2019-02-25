@@ -2,6 +2,8 @@
 let food;
 let snake;
 let gameOver = false;
+let score = 0;
+let gameOverText = "GAME OVER";
 
 function setup() {
     createCanvas(525, 525);
@@ -12,10 +14,6 @@ function setup() {
     let foodY = Math.floor(random(0, 15)) * 35;
 
     food = new Food(foodX, foodY, 35, 35);
-
-    console.log(`Food X: ${foodX}`);
-    console.log(`Food Y: ${foodY}`);
-    
 
 
     snake = new Snake(70, 70, 35 ,35, 10);
@@ -32,13 +30,13 @@ function draw() {
   noStroke();
 
   
-  
   snake.update();
   snake.draw();
 
 
   if (snake.eat(food)) {
     
+    score++;
     let foodToRespawn = createVector(Math.floor(random(0, 15)) * 35, Math.floor(random(0, 15)) * 35);
 
     for (let i = 0; i < snake.body.length; i++) {
@@ -60,7 +58,16 @@ function draw() {
   food.update();
   food.draw();
 
+  fill(255);
+
+  textSize(25);
+  text(score, 50, 50);
+
   if (gameOver) {
+
+    textSize(35);
+    text(gameOverText, (width / 2) - (textWidth(gameOverText) / 2), (height / 2));
+
     noLoop();
   }
 }
