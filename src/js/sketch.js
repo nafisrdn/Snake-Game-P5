@@ -6,6 +6,8 @@ let score;
 let gameOverText = "GAME OVER";
 let highestScore = 0;
 
+const bodyHtml = document.body;
+
 function setup() {
     createCanvas(525, 525);
     frameRate(60)
@@ -35,7 +37,15 @@ function restartGame() {
   loop();
 }
 
+function mouseWheel(event) {
+  bodyHtml.setAttribute('style', 'overflow: auto;');
+}
+
 function keyPressed() {
+  
+  
+
+  bodyHtml.setAttribute('style', 'overflow: hidden;');
   snake.keyPressed();
 
   if (keyCode === 32) {
@@ -47,6 +57,7 @@ function keyPressed() {
 
 function mouseClicked() {
   if (mouseButton === LEFT) {
+
     if (gameOver) {
       restartGame();
     } 
