@@ -22,6 +22,8 @@ class Snake{
 
         this.lastTailXdir;
         this.lastTailYdir;
+
+        this.isDie = false;
     }
 
     setDir(x, y){
@@ -34,13 +36,26 @@ class Snake{
         // return collidePointRect(0, 0, 0, 20, 20);
     }
 
+    hitBody() {
+        let hit = false;
+        for (let i = 2; i < this.body.length; i++) {
+            const part = this.body[i];
+            hit = collidePointRect(this.head.x, this.head.y, part.x, part.y, this.width - 1, this.height - 1);
+            
+            if (hit) {
+                return true;
+            }
+        }
+
+        // return false;
+
+    }
+
     
 
     grow(){
         let x;
         let y;
-
-
         
         if (this.lastTailXdir === 1) {
             x = this.body[this.body.length - 1].x - this.width;
@@ -84,7 +99,6 @@ class Snake{
     update(){
 
         if (this.delta == this.delay) {
-            
             let prevPosVector = [];
 
             prevPosVector[0] = createVector(this.head.x, this.head.y);
@@ -147,18 +161,17 @@ class Snake{
     }
 
     draw(){
-        
-        for (let i = 0; i < this.body.length; i++) {
-            let b = this.body[i];
+        fill(0, 255, 0);
+        for (let i = 1; i < this.body.length; i++) {
+            let part = this.body[i];
 
-            if (i === 0) {
-                fill(255, 255, 0);
-            }else{
-                fill(0, 255, 0);
-            }
-
-            rect(b.x, b.y, this.width, this.height);
+            rect(part.x, part.y, this.width, this.height);
 
         }
+
+        
+        fill(255, 255, 0);
+        rect(this.body[0].x, this.body[0].y, this.width, this.height);
+
     }
 }

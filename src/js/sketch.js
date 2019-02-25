@@ -1,6 +1,7 @@
 
 let food;
 let snake;
+let gameOver = false;
 
 function setup() {
     createCanvas(525, 525);
@@ -24,7 +25,6 @@ function keyPressed() {
   snake.keyPressed();
 }
 
-let hit = false;
 
 function draw() {
   
@@ -53,8 +53,14 @@ function draw() {
     snake.grow();
   }
 
+  if (snake.hitBody()) {
+    gameOver = true;
+  }
+
   food.update();
   food.draw();
 
-  
+  if (gameOver) {
+    noLoop();
+  }
 }
