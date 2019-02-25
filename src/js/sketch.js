@@ -17,7 +17,7 @@ function setup() {
     
 
 
-    snake = new Snake(0, 0, 35 ,35, 35);
+    snake = new Snake(0, 0, 35 ,35, 20);
 }
 
 function keyPressed() {
