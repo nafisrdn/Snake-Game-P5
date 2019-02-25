@@ -17,7 +17,7 @@ function setup() {
     
 
 
-    snake = new Snake(0, 0, 35 ,35, 20);
+    snake = new Snake(0, 0, 35 ,35, 10);
 }
 
 function keyPressed() {
@@ -32,12 +32,25 @@ function draw() {
   noStroke();
 
   
-
+  
   snake.update();
   snake.draw();
 
+
   if (snake.eat(food)) {
-    background(255, 0, 0);
+    
+    let foodToRespawn = createVector(Math.floor(random(0, 15)) * 35, Math.floor(random(0, 15)) * 35);
+
+    for (let i = 0; i < snake.body.length; i++) {
+      let b = snake.body[i];
+      
+      if (b.x == foodToRespawn.x && b.y == foodToRespawn.y) {
+        foodToRespawn = createVector(Math.floor(random(0, 15)) * 35, Math.floor(random(0, 15)) * 35);
+      }
+      
+    }
+    food.reLocate(foodToRespawn.x, foodToRespawn.y);
+    snake.grow();
   }
 
   food.update();

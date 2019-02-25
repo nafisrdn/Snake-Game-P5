@@ -8,6 +8,8 @@ class Snake{
         this.x = x;
         this.y = y;
 
+        this.head = this.body[0];
+
         this.width = width;
         this.height = height;
 
@@ -28,7 +30,8 @@ class Snake{
     }
 
     eat(food) {
-        return collidePointRect(this.x, this.y, food.x, food.y, this.width - 1, this.height - 1);
+        return collidePointRect(this.head.x, this.head.y, food.x, food.y, this.width - 1, this.height - 1);
+        // return collidePointRect(0, 0, 0, 20, 20);
     }
 
     
@@ -79,17 +82,15 @@ class Snake{
     }
 
     update(){
-        console.log(this.lastTailYdir);
 
         if (this.delta == this.delay) {
-            const head = this.body[0];
             
             let prevPosVector = [];
 
-            prevPosVector[0] = createVector(head.x, head.y);
+            prevPosVector[0] = createVector(this.head.x, this.head.y);
 
-            head.x += Math.floor(this.width * this.xdir);
-            head.y += Math.floor(this.height * this.ydir);
+            this.head.x += Math.floor(this.width * this.xdir);
+            this.head.y += Math.floor(this.height * this.ydir);
             
             for (let i = 0; i < this.body.length; i++) {
                 if (i > 0) {

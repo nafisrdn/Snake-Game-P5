@@ -7,10 +7,14 @@ class Food {
         this.height = height;
     }
 
+    reLocate(x, y){
+        this.x = x;
+        this.y = y;
+    }
+
     update() {
         
 
-        
     }
 
     draw() {

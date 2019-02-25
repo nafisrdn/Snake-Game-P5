@@ -32,7 +32,7 @@ function javascript(cb) {
 
 function jsPlugin(cb) {
     return src(['src/plugins/p5.min.js', 'src/plugins/p5.collide2d.min.js'])
-    .pipe(concat('plugins.js'))
+    // .pipe(concat('plugins.js'))
     .pipe(dest('dist/js'));
 }
 
