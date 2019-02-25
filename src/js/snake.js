@@ -3,7 +3,7 @@ class Snake{
 
     constructor(x, y, width, height, delay){
         this.body = [];
-        this.body[0] = createVector(0, 0);
+        this.body[0] = createVector(x, y);
 
         this.x = x;
         this.y = y;
@@ -46,9 +46,12 @@ class Snake{
                 return true;
             }
         }
+    }
 
-        // return false;
-
+    hitWall() {
+        if(this.head.x + this.width > width || this.head.x < 0 || this.head.y > height - this.height || this.head.y < 0){
+            return true;
+        }
     }
 
     

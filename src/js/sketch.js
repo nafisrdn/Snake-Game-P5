@@ -18,7 +18,7 @@ function setup() {
     
 
 
-    snake = new Snake(0, 0, 35 ,35, 10);
+    snake = new Snake(70, 70, 35 ,35, 10);
 }
 
 function keyPressed() {
@@ -53,7 +53,7 @@ function draw() {
     snake.grow();
   }
 
-  if (snake.hitBody()) {
+  if (snake.hitBody() || snake.hitWall()) {
     gameOver = true;
   }
 
